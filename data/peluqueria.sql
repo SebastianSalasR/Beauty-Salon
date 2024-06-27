@@ -1,19 +1,15 @@
-create schema peluqueria;
-
-alter schema peluqueria owner to pg_database_owner;
-
-create table peluqueria.region (
+create table region (
     id_region int primary key not null,
     nombre varchar(20) not null
 );
 
-create table peluqueria.comuna (
+create table comuna (
     id_comuna int primary key not null,
     nombre varchar(20) not null,
     id_region int not null
 );
 
-create table peluqueria.sede (
+create table sede (
     id_sede int primary key not null,
     nombre varchar(20) not null,
     latitud float not null,
@@ -21,7 +17,7 @@ create table peluqueria.sede (
     id_comuna int not null
 );
 
-create table peluqueria.trabajador (
+create table trabajador (
     id_trabajador int primary key not null,
     nombre varchar(20) not null,
     apellido varchar(20) not null,
@@ -31,12 +27,12 @@ create table peluqueria.trabajador (
     id_cargo int not null
 );
 
-create table peluqueria.cargo (
+create table cargo (
     id_cargo int primary key not null,
     nombre varchar(20) not null
 );
 
-create table peluqueria.producto (
+create table producto (
     id_producto int primary key not null,
     precio_compra int not null,
     nombre varchar(20) not null,
@@ -47,7 +43,7 @@ create table peluqueria.producto (
     
 );
 
-create table peluqueria.servicio (
+create table servicio (
     id_servicio int primary key not null,
     precio int not null,
     tipo varchar(20) not null,
@@ -55,7 +51,7 @@ create table peluqueria.servicio (
     
 );
 
-create table peluqueria.venta (
+create table venta (
     id_venta int primary key not null,
     precio_venta int not null,
     fecha timestamp not null,
@@ -63,7 +59,7 @@ create table peluqueria.venta (
     id_trabajador int not null
 );
 
-create table peluqueria.cita (
+create table cita (
     id_cita int primary key not null,
     fecha timestamp not null,
     id_detalle int not null,
@@ -72,76 +68,76 @@ create table peluqueria.cita (
     
 );
 
-create table peluqueria.cliente (
+create table cliente (
     id_cliente int primary key not null,
     nombre varchar(20) not null,
     apellido varchar(20) not null,
-    rut int not null,
+    rut varchar not null,
     telefono int not null,
     id_venta int not null  
 );
 
-create table peluqueria.detalle(
+create table detalle(
 	id_detalle int primary key not null,
 	id_servicio int not null,
 	id_venta int not null
 );
 
-alter table peluqueria.comuna 
+alter table comuna 
 add constraint id_region
-foreign key (id_region) references peluqueria.region(id_region);
+foreign key (id_region) references region(id_region);
 
-alter table peluqueria.sede 
+alter table sede 
 add constraint id_comuna
-foreign key (id_comuna) references peluqueria.comuna(id_comuna);
+foreign key (id_comuna) references comuna(id_comuna);
 
-alter table peluqueria.trabajador 
+alter table trabajador 
 add constraint id_sede
-foreign key (id_sede) references peluqueria.sede(id_sede);
+foreign key (id_sede) references sede(id_sede);
 
-alter table peluqueria.trabajador 
+alter table trabajador 
 add constraint id_cargo
-foreign key(id_cargo) references peluqueria.cargo(id_cargo);
+foreign key(id_cargo) references cargo(id_cargo);
 
-alter table peluqueria.producto
+alter table producto
 add constraint id_sede
-foreign key (id_sede) references peluqueria.sede(id_sede);
+foreign key (id_sede) references sede(id_sede);
 
-alter table peluqueria.servicio
+alter table servicio
 add constraint id_sede
-foreign key (id_sede) references peluqueria.sede(id_sede);
+foreign key (id_sede) references sede(id_sede);
 
-alter table peluqueria.venta
+alter table venta
 add constraint id_product
-foreign key (id_producto) references peluqueria.producto(id_producto);
+foreign key (id_producto) references producto(id_producto);
 
-alter table peluqueria.venta
+alter table venta
 add constraint id_trabajador
-foreign key (id_trabajador) references peluqueria.trabajador(id_trabajador);
+foreign key (id_trabajador) references trabajador(id_trabajador);
 
-alter table peluqueria.cita
+alter table cita
 add constraint id_trabajador
-foreign key (id_trabajador) references peluqueria.trabajador(id_trabajador);
+foreign key (id_trabajador) references trabajador(id_trabajador);
 
-alter table peluqueria.cita 
+alter table cita 
 add constraint id_cliente
-foreign key(id_cliente) references peluqueria.cliente(id_cliente);
+foreign key(id_cliente) references cliente(id_cliente);
 
-alter table peluqueria.cita
+alter table cita
 add constraint id_detalle
-foreign key (id_detalle) references peluqueria.detalle(id_detalle);
+foreign key (id_detalle) references detalle(id_detalle);
 
-alter table peluqueria.detalle
+alter table detalle
 add constraint id_servicio
-foreign key (id_servicio) references peluqueria.servicio(id_servicio);
+foreign key (id_servicio) references servicio(id_servicio);
 
-alter table peluqueria.detalle
+alter table detalle
 add constraint id_venta
-foreign key(id_venta) references peluqueria.venta(id_venta);
+foreign key(id_venta) references venta(id_venta);
 
-alter table peluqueria.cliente
+alter table cliente
 add constraint id_venta
-foreign key (id_venta) references peluqueria.venta(id_venta);
+foreign key (id_venta) references venta(id_venta);
 
 
 
