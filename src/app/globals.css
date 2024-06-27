@@ -169,3 +169,6 @@ body {
   scrollbar-width: none;
   /* Firefox */
 }
+.datePicker {
+  width: 100%;
+}
