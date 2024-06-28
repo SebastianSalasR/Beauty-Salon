@@ -1,23 +1,118 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
-	provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-	provider = "postgresql"
-	url      = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
-model User { // Creates a table that waits for this atributes to be loaded
-	id Int @id @default(autoincrement())
-	email String @unique
-	username String @unique
-	password String
-	createdAt DateTime @default(now())// Stores the date when it was created
-	updatedAt DateTime @updatedAt// Stores the date when it was updated
+model Region {
+  id_region Int      @id
+  nombre    String
+  Comuna    Comuna[]
+}
+
+model Comuna {
+  id_comuna Int    @id
+  nombre    String
+  id_region Int
+  Region    Region @relation(fields: [id_region], references: [id_region])
+  Sede      Sede[]
+}
+
+model Sede {
+  id_sede    Int          @id
+  nombre     String
+  latitud    Float
+  longitud   Float
+  id_comuna  Int
+  Producto   Producto[]
+  Comuna     Comuna       @relation(fields: [id_comuna], references: [id_comuna])
+  Servicio   Servicio[]
+  Trabajador Trabajador[]
+}
+
+model Trabajador {
+  id_trabajador Int     @id
+  nombre        String
+  apellido      String
+  telefono      Int
+  sueldo        Int
+  id_sede       Int
+  id_cargo      Int
+  Cita          Cita[]
+  Cargo         Cargo   @relation(fields: [id_cargo], references: [id_cargo])
+  Sede          Sede    @relation(fields: [id_sede], references: [id_sede])
+  Venta         Venta[]
+}
+
+model Cargo {
+  id_cargo   Int          @id
+  nombre     String
+  Trabajador Trabajador[]
+}
+
+model Producto {
+  id_producto   Int     @id
+  precio_compra Int
+  nombre        String
+  stock         Int
+  flag          Boolean
+  precio_venta  Int
+  id_sede       Int
+  Sede          Sede    @relation(fields: [id_sede], references: [id_sede])
+  Venta         Venta[]
+}
+
+model Servicio {
+  id_servicio Int       @id
+  precio      Int
+  tipo        String
+  id_sede     Int
+  Detalle     Detalle[]
+  Sede        Sede      @relation(fields: [id_sede], references: [id_sede])
+}
+
+model Venta {
+  id_venta      Int        @id
+  precio_venta  Int
+  fecha         DateTime
+  id_producto   Int
+  id_trabajador Int
+  Cliente       Cliente[]
+  Detalle       Detalle[]
+  Producto      Producto   @relation(fields: [id_producto], references: [id_producto])
+  Trabajador    Trabajador @relation(fields: [id_trabajador], references: [id_trabajador])
+}
+
+model Cita {
+  id_cita       Int        @id
+  fecha         DateTime
+  id_detalle    Int
+  id_trabajador Int
+  id_cliente    Int
+  Cliente       Cliente    @relation(fields: [id_cliente], references: [id_cliente])
+  Detalle       Detalle    @relation(fields: [id_detalle], references: [id_detalle])
+  Trabajador    Trabajador @relation(fields: [id_trabajador], references: [id_trabajador])
+}
+
+model Cliente {
+  id_cliente Int    @id
+  nombre     String
+  apellido   String
+  rut        String
+  telefono   Int
+  id_venta   Int
+  Cita       Cita[]
+  Venta      Venta  @relation(fields: [id_venta], references: [id_venta])
+}
+
+model Detalle {
+  id_detalle  Int      @id
+  id_servicio Int
+  id_venta    Int
+  Cita        Cita[]
+  Servicio    Servicio @relation(fields: [id_servicio], references: [id_servicio])
+  Venta       Venta    @relation(fields: [id_venta], references: [id_venta])
 }
