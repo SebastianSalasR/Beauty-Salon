@@ -1,7 +1,9 @@
-1) Hacer un form en el front end por cada tabla
-2) Hacer el diccionario de la tabla de datos
+1) Hacer un form en el front end por cada tabla: Moreno
+2) Hacer el diccionario de la tabla de datos: Espe
 3) Redy
-4) Crear los cripts de insertar datos
+4) Crear los scripts de insertar datos: Johan
 5) Preguntar al profe
 6) Crear script para llevar los datos de la db transcacional a la estrella: Chancho malo
-7) Revisar las querys de la estrella
+7) Revisar las querys de la estrella: Chancho malo
+
+Peluqueria: https://lucid.app/lucidchart/1287e323-41c1-41cf-ae91-3a406fcc5abe/edit?invitationId=inv_42304f95-22f2-47ad-a035-12c0281b0328&page=01vM6F_sb84U#
