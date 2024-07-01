@@ -78,7 +78,7 @@ function RegisterWorker() {
 				{errors.worker_salary && <p className="text-red-500 text-sm">{errors.worker_salary.message}</p>}
 
 				<button className="w-full bg-blue-500 text-white p-3 rounded-lg">
-					Register
+					Register worker
 				</button>
 			</form>
 		</section>
