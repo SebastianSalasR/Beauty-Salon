@@ -2,7 +2,7 @@ import prisma from "@/libs/prisma";
 import { NextResponse } from "next/server";
 
 async function validateUniqueField(data, field, errorMessage) {
-	const existingUser = await prisma.trabajador.findUnique({
+	const existingUser = await prisma.Trabajador.findUnique({
 		where: { [field]: data[field] },
 	});
 
@@ -22,7 +22,7 @@ export async function POST(req) {
 			return phoneValidationError;
 		}
 
-		const newWorker = await prisma.trabajador.create({
+		const newWorker = await prisma.Trabajador.create({
 			data: {
 				id_trabajador: 1,
 				nombre: data.worker_name,
