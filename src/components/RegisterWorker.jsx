@@ -21,7 +21,6 @@ function RegisterWorker() {
 		});
 		if (res.ok) {
 			alert("Worker registered successfully");
-			// Redirection or additional logic here if needed
 		} else {
 			alert("There's been a problem registering the worker");
 		}
