@@ -62,7 +62,7 @@ function Registerclient() {
 				<label htmlFor="client_phone_number" className="text-slate-500 mb-2 block text-sm">
 					Phone number of the client
 				</label>
-				<input type="tel"
+				<input type="number"
 					{...register("client_phone_number", { required: { value: true, message: "client phone number is required" } })}
 					className="p-3 rounded block mb-2 bg-slate-900 text-slate-300 w-full"
 					placeholder="Phone number"

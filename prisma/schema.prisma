@@ -7,6 +7,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User { // Creates a table that waits for this atributes to be loaded
+  id Int @id @default(autoincrement())
+  email String @unique
+  username String @unique
+  password String
+  createdAt DateTime @default(now())// Stores the date when it was created
+  updatedAt DateTime @updatedAt// Stores the date when it was updated
+}
 
 model Region {
   id_region Int     @id @default(autoincrement())

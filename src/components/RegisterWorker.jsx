@@ -16,7 +16,6 @@ function RegisterWorker() {
 				worker_name: data.worker_name,
 				worker_last_name: data.worker_last_name,
 				worker_phone_number: data.worker_phone_number,
-				worker_salary: data.worker_salary,
 			})
 		});
 		if (res.ok) {
