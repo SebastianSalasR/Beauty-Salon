@@ -18,12 +18,12 @@ create table sede (
 );
 
 create table trabajador (
-    id_trabajador int primary key not null,
+    id_trabajador int serial primary key not null,
     nombre varchar(20) not null,
     apellido varchar(20) not null,
     telefono int not null,
     id_sede int not null,
-    id_cargo int not null
+    id_comuna int not null
 );
 
 create table cargo (
