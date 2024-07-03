@@ -58,12 +58,6 @@ model Trabajador {
   citas         Cita[]
 }
 
-model Cargo {
-  id_cargo  Int     @id @default(autoincrement())
-  nombre     String  @unique
-  contratos  Contrato[]
-}
-
 model Contrato {
   id_contrato  Int        @id @default(autoincrement())
   sueldo       Int
@@ -83,6 +77,33 @@ model Liquidacion {
   monto_comision Int
   id_contrato    Int
   contrato       Contrato   @relation(fields: [id_contrato], references: [id_contrato])
+}
+
+model Venta {
+  id_venta           Int     @id @default(autoincrement())
+  precio_venta_total Int
+  fecha              DateTime
+  id_cliente         Int
+  id_trabajador      Int
+  cliente            Cliente  @relation(fields: [id_cliente], references: [id_cliente])
+  trabajador         Trabajador @relation(fields: [id_trabajador], references: [id_trabajador])
+  tenerVenta         TenerVenta?
+}
+model Cita {
+  id_cita       Int     @id @default(autoincrement())
+  fecha         DateTime
+  id_trabajador Int
+  id_cliente    Int
+  id_servicio   Int
+  trabajador    Trabajador @relation(fields: [id_trabajador], references: [id_trabajador])
+  cliente       Cliente    @relation(fields: [id_cliente], references: [id_cliente])
+  servicio      Servicio   @relation(fields: [id_servicio], references: [id_servicio])
+}
+
+model Cargo {
+  id_cargo  Int     @id @default(autoincrement())
+  nombre     String  @unique
+  contratos  Contrato[]
 }
 
 model Producto {
@@ -121,16 +142,6 @@ model VenderServicio {
   sede               Sede     @relation(fields: [id_sede], references: [id_sede])
 }
 
-model Venta {
-  id_venta           Int     @id @default(autoincrement())
-  precio_venta_total Int
-  fecha              DateTime
-  id_cliente         Int
-  id_trabajador      Int
-  cliente            Cliente  @relation(fields: [id_cliente], references: [id_cliente])
-  trabajador         Trabajador @relation(fields: [id_trabajador], references: [id_trabajador])
-  tenerVenta         TenerVenta?
-}
 
 model TenerVenta {
   id_tener_venta Int     @id @default(autoincrement())
@@ -140,16 +151,6 @@ model TenerVenta {
   venta          Venta    @relation(fields: [id_venta], references: [id_venta])
 }
 
-model Cita {
-  id_cita       Int     @id @default(autoincrement())
-  fecha         DateTime
-  id_trabajador Int
-  id_cliente    Int
-  id_servicio   Int
-  trabajador    Trabajador @relation(fields: [id_trabajador], references: [id_trabajador])
-  cliente       Cliente    @relation(fields: [id_cliente], references: [id_cliente])
-  servicio      Servicio   @relation(fields: [id_servicio], references: [id_servicio])
-}
 
 model Cliente {
   id_cliente Int     @id @default(autoincrement())

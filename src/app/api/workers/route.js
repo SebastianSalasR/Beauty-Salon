@@ -1,27 +1,14 @@
 import prisma from "@/libs/prisma";
 import { NextResponse } from "next/server";
-
-async function validateUniqueField(data, field, errorMessage, status) {
-	const existingUser = await prisma.trabajador.findUnique({
-		where: { [field]: data[field] },
-	});
-
-	if (existingUser) {
-		return ({ message: errorMessage, status});
-	}
-}
+import pool from "@/utils/Pool";
 
 export async function POST(req) {
 	try {
 		const data = await req.json();
 		console.log("data:")
 		console.log(data);
-		/*
-		const phoneValidationError = await validateUniqueField(data, "telefono", "Phone number already exists");
-		if (phoneValidationError) {
-			return phoneValidationError;
-		}
-		*/
+
+		const 
 		
 		console.log("Creating new worker... ");
 		const newWorker = await prisma.trabajador.create({
