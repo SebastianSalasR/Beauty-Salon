@@ -3,18 +3,18 @@ create schema peluqueria;
 alter schema peluqueria owner to pg_database_owner;
 
 create table peluqueria.region (
-    id_region int primary key not null,
+    id_region serial primary key,
     nombre varchar(20) not null
 );
 
 create table peluqueria.comuna (
-    id_comuna int primary key not null,
+    id_comuna serial primary key,
     nombre varchar(20) not null,
     id_region int not null
 );
 
 create table peluqueria.sede (
-    id_sede int primary key not null,
+    id_sede serial primary key,
     nombre varchar(20) not null,
     latitud float not null,
     longitud float not null,
@@ -22,7 +22,7 @@ create table peluqueria.sede (
 );
 
 create table peluqueria.trabajador (
-    id_trabajador int primary key not null,
+    id_trabajador serial primary key,
     nombre varchar(20) not null,
     apellido varchar(20) not null,
     telefono int not null,
@@ -31,12 +31,12 @@ create table peluqueria.trabajador (
 );
 
 create table peluqueria.cargo (
-    id_cargo int primary key not null,
+    id_cargo serial primary key,
     nombre varchar(20) not null
 );
 
 create table peluqueria.contrato(
-	id_contrato int primary key not null,
+	id_contrato serial primary key,
 	sueldo int not null,
 	fecha_inicio date not null,
 	fecha_termino date not null,
@@ -46,7 +46,7 @@ create table peluqueria.contrato(
 );
 
 create table peluqueria.liquidacion(
-	id_liquidacion int primary key not null,
+	id_liquidacion serial primary key,
 	fecha_pago date not null,
 	monto_comision int not null,
 	id_contrato int not null
@@ -54,7 +54,7 @@ create table peluqueria.liquidacion(
 
 
 create table peluqueria.producto (
-    id_producto int primary key not null,
+    id_producto serial primary key,
     precio_compra int not null,
     nombre varchar(20) not null,
     stock int not null,
@@ -65,13 +65,13 @@ create table peluqueria.producto (
 );
 
 create table peluqueria.vender_producto (
-    id_vender_producto int primary key not null,
+    id_vender_producto serial primary key,
     id_producto int not null,
     id_sede int not null
 );
 
 create table peluqueria.servicio (
-    id_servicio int primary key not null,
+    id_servicio serial primary key,
     precio int not null,
     tipo varchar(20) not null,
     flag varchar(20) not null,
@@ -79,13 +79,13 @@ create table peluqueria.servicio (
 );
 
 create table peluqueria.vender_servicio(
-    id_vender_servicio int primary key not null,
+    id_vender_servicio serial primary key,
     id_servicio int not null,
     id_sede int not null
 );
 
 create table peluqueria.venta (
-    id_venta int primary key not null,
+    id_venta serial primary key,
     precio_venta_total int not null,
     fecha timestamp not null,
     id_cliente int not null,
@@ -94,13 +94,13 @@ create table peluqueria.venta (
 );
 
 create table peluqueria.tener_venta(
-    id_tener_venta int primary key not null,
+    id_tener_venta serial primary key,
     id_producto int not null,
     id_venta int not null
 );
 
 create table peluqueria.cita (
-    id_cita int primary key not null,
+    id_cita serial primary key,
     fecha timestamp not null,
     id_trabajador int not null,
     id_cliente int not null,
@@ -108,7 +108,7 @@ create table peluqueria.cita (
 );
 
 create table peluqueria.cliente (
-    id_cliente int primary key not null,
+    id_cliente serial primary key,
     nombre varchar(20) not null,
     apellido varchar(20) not null,
     rut varchar not null,
