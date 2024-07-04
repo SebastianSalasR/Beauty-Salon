@@ -18,7 +18,7 @@ export async function POST(req) {
 		console.log("New worker created: ")
 		console.log(newWorker.rows[0]);
 
-		return NextResponse.json({ message: 'Trabajador created successfully', worker: newWorker.rows[0] });
+		return NextResponse.json({ message: 'Worker created successfully', worker: newWorker.rows[0] });
 	} catch (error) {
 		await client.query('ROLLBACK');
 		console.error("Error creating trabajador:", error);
