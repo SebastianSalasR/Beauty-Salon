@@ -42,7 +42,7 @@ function Registerclient() {
 				</label>
 				<input type="text"
 					{...register("client_name", { required: { value: true, message: "Client Name is required" } })}
-					className="p-3 rounded block mb-2 bg-slate-900 text-slate-300 w-full"
+					className="p-3 rounded block mb-2 bg-azure text-slate-300 w-full"
 					placeholder="Name"
 				/>
 				{errors.client_name && <p className="text-red-500 text-sm">{errors.client_name.message}</p>}
@@ -53,7 +53,7 @@ function Registerclient() {
 				</label>
 				<input type="text"
 					{...register("client_last_name", { required: { value: true, message: "Client last name is required" } })}
-					className="p-3 rounded block mb-2 bg-slate-900 text-slate-300 w-full"
+					className="p-3 rounded block mb-2 bg-azure text-slate-300 w-full"
 					placeholder="Last name"
 				/>
 				{errors.client_last_name && <p className="text-red-500 text-sm">{errors.client_last_name.message}</p>}
@@ -64,13 +64,13 @@ function Registerclient() {
 				</label>
 				<input type="number"
 					{...register("client_phone_number", { required: { value: true, message: "client phone number is required" } })}
-					className="p-3 rounded block mb-2 bg-slate-900 text-slate-300 w-full"
+					className="p-3 rounded block mb-2 bg-azure text-slate-300 w-full"
 					placeholder="Phone number"
 				/>
 				{errors.client_phone_number && <p className="text-red-500 text-sm">{errors.client_phone_number.message}</p>}
 
 
-				<button className="w-full bg-blue-500 text-white p-3 rounded-lg">
+				<button className="w-full bg-crimson text-white p-3 rounded-lg">
 					Register client
 				</button>
 			</form>

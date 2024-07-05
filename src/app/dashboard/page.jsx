@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form"
 import { useRouter } from "next/navigation";
 import RegisterWorker from "@/components/RegisterWorker"
 import Registerclient from "@/components/RegisterClients";
+import RegisterService from "@/components/RegisterService";
 
 function DashboardPage() {
 
@@ -13,6 +14,7 @@ function DashboardPage() {
 
 				<Registerclient />
 				<RegisterWorker />
+				<RegisterService />
 
 		</main>
 	);

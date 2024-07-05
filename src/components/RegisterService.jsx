@@ -38,8 +38,8 @@ function Registerservice() {
 				</label>
 				<input type="text"
 					{...register("service_kind", { required: { value: true, message: "service last name is required" } })}
-					className="p-3 rounded block mb-2 bg-slate-900 text-slate-300 w-full"
-					placeholder="Last name"
+					className="p-3 rounded block mb-2 bg-azure text-slate-300 w-full"
+					placeholder="Service"
 				/>
 				{errors.service_kind && <p className="text-red-500 text-sm">{errors.service_kind.message}</p>}
 
@@ -49,13 +49,13 @@ function Registerservice() {
 				</label>
 				<input type="number"
 					{...register("service_price", { required: { value: true, message: "service name is required" } })}
-					className="p-3 rounded block mb-2 bg-slate-900 text-slate-300 w-full"
-					placeholder="Name"
+					className="p-3 rounded block mb-2 bg-azure text-slate-300 w-full"
+					placeholder="Price"
 				/>
 				{errors.service_price && <p className="text-red-500 text-sm">{errors.service_price.message}</p>}
 
 
-				<button className="w-full bg-blue-500 text-white p-3 rounded-lg">
+				<button className="w-full bg-crimson text-white p-3 rounded-lg">
 					Register service
 				</button>
 			</form>

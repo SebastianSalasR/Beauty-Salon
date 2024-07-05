@@ -39,7 +39,7 @@ function RegisterWorker() {
 				</label>
 				<input type="text"
 					{...register("worker_name", { required: { value: true, message: "Worker name is required" } })}
-					className="p-3 rounded block mb-2 bg-slate-900 text-slate-300 w-full"
+					className="p-3 rounded block mb-2 bg-azure text-slate-300 w-full"
 					placeholder="Name"
 				/>
 				{errors.worker_name && <p className="text-red-500 text-sm">{errors.worker_name.message}</p>}
@@ -49,7 +49,7 @@ function RegisterWorker() {
 				</label>
 				<input type="text"
 					{...register("worker_last_name", { required: { value: true, message: "Worker last name is required" } })}
-					className="p-3 rounded block mb-2 bg-slate-900 text-slate-300 w-full"
+					className="p-3 rounded block mb-2 bg-azure text-slate-300 w-full"
 					placeholder="Last name"
 				/>
 				{errors.worker_last_name && <p className="text-red-500 text-sm">{errors.worker_last_name.message}</p>}
@@ -59,7 +59,7 @@ function RegisterWorker() {
 				</label>
 				<input type="tel"
 					{...register("worker_phone_number", { required: { value: true, message: "Worker phone number is required" } })}
-					className="p-3 rounded block mb-2 bg-slate-900 text-slate-300 w-full"
+					className="p-3 rounded block mb-2 bg-azure text-slate-300 w-full"
 					placeholder="Phone number"
 				/>
 				{errors.worker_phone_number && <p className="text-red-500 text-sm">{errors.worker_phone_number.message}</p>}
@@ -69,13 +69,13 @@ function RegisterWorker() {
 				</label>
 				<input type="number"
 					{...register("worker_salary", { required: { value: true, message: "Worker salary is required" } })}
-					className="p-3 rounded block mb-2 bg-slate-900 text-slate-300 w-full"
+					className="p-3 rounded block mb-2 bg-azure text-slate-300 w-full"
 					placeholder="Salary of the worker"
 					min="0"
 				/>
 				{errors.worker_salary && <p className="text-red-500 text-sm">{errors.worker_salary.message}</p>}
 
-				<button className="w-full bg-blue-500 text-white p-3 rounded-lg">
+				<button className="w-full bg-crimson text-white p-3 rounded-lg">
 					Register worker
 				</button>
 			</form>
