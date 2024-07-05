@@ -1,8 +1,5 @@
 "use client";
-import { signOut } from "next-auth/react";
 import React, { useState } from "react";
-import { useForm } from "react-hook-form"
-import { useRouter } from "next/navigation";
 import RegisterWorker from "@/components/RegisterWorker"
 import Registerclient from "@/components/RegisterClients";
 import RegisterService from "@/components/RegisterService";
