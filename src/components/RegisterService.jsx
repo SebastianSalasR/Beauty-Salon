@@ -32,7 +32,6 @@ function Registerservice() {
 				<label>
 					Register service
 				</label>
-
 				<label htmlFor="service_kind" className="text-slate-500 mb-2 block text-sm">
 					Kind of the service
 				</label>
