@@ -13,6 +13,9 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
+				cornsilk: "#FFF8DC",
+				azure: "#FFFAFA",
+				crimson: "#C93B61",
 				bonito: {
 					1: '#EEE2DC',
 					2: '#EDC7B7',
