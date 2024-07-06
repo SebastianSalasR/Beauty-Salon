@@ -84,4 +84,4 @@ function RegisterDates() {
 	);
 }
 
-export default RegisterCita;
+export default RegisterDates;
