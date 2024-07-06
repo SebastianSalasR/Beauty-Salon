@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import RegisterWorker from "@/components/RegisterWorker"
 import Registerclient from "@/components/RegisterClients";
 import RegisterService from "@/components/RegisterService";
+import RegisterDates from "@/components/RegisterDate";
 
 function DashboardPage() {
 
@@ -13,6 +14,7 @@ function DashboardPage() {
 				<Registerclient />
 				<RegisterWorker />
 				<RegisterService />
+				<RegisterDates />
 			</div>
 
 		</main>
