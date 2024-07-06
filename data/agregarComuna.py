@@ -3,7 +3,7 @@ import random
 
 fake = Faker()
 
-regiones = ["Region de Arica y Parinacota", "Region de Tarapaca", "Region de Antofagasta", "Region de Atacama", "Region de Coquimbo", "Region de Valparaiso", "Region Metropolitana de Santiago", "Region del Libertador General Bernardo OHiggins", "Region del Maule", "Region de nhuble", "Region del Biobio", "Region de La Araucania", "Region de Los Rios", "Region de Los Lagos", "Region de Aysen del General Carlos Ibanhez del Campo", "Region de Magallanes y de la Antartica Chilena"]
+comunas = ["Santiago", "Valparaiso", "Concepcion", "La Serena", "Antofagasta", "Temuco", "Iquique", "Rancagua", "Talca", "Chillan", "Arica", "Puerto Montt", "Coquimbo", "Valdivia", "Punta Arenas", "Copiapo", "Curico", "Osorno", "Los Angeles", "Calama"]
 
 def generarSQL(nombreTabla, columnas, cantidadDatos):
     insertarDatos = []
@@ -11,10 +11,10 @@ def generarSQL(nombreTabla, columnas, cantidadDatos):
     for i in range(1, cantidadDatos + 1):
         valores = []
         for columna in columnas:
-            if columna == 'id_region':
+            if columna == 'id_comuna':
                 valores.append(str(i))
             elif columna == 'nombre':
-                valores.append(f"'{regiones[i]}'")
+                valores.append(f"'{comunas[i]}'")
             else:
                 valores.append(f"'{fake.word()}'")
         
@@ -24,8 +24,8 @@ def generarSQL(nombreTabla, columnas, cantidadDatos):
 
     return insertarDatos
 
-nombreTabla = 'region'
-columnas = ['id_region', 'nombre']
+nombreTabla = 'comuna'
+columnas = ['id_comuna', 'nombre']
 cantidadDatos = 10
 
 insertar = generarSQL(nombreTabla, columnas, cantidadDatos)

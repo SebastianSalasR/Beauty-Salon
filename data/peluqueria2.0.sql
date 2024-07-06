@@ -21,7 +21,7 @@ create table trabajador (
     id_trabajador int primary key not null,
     nombre varchar(20) not null,
     apellido varchar(20) not null,
-    telefono int not null,
+    telefono varchar not null,
     id_sede int not null,
     id_cargo int not null
 );
@@ -91,7 +91,7 @@ create table cliente (
     nombre varchar(20) not null,
     apellido varchar(20) not null,
     rut varchar not null,
-    telefono int not null
+    telefono varchar not null
 );
 
 alter table comuna 
