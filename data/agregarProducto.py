@@ -13,14 +13,14 @@ def generarSQL(nombreTabla, columnas, cantidadDatos):
         for columna in columnas:
             if columna == 'id_producto':
                 valores.append(str(i))
-            elif columna == 'operador':
-                valores.append(f"'{fake.name()}'")
+            elif columna == 'precio_compra':
+                valores.append(str(random.randint(500, 10000)))
             elif columna == 'nombre':
                 valores.append(f"'{random.choice(productos)}'")
-            elif columna == 'id_centro_energia':
+            elif columna == 'stock':
                 valores.append(str(random.randint(1, 100)))
-            elif columna == 'id_comuna':
-                valores.append(str(random.randint(1, 10)))
+            elif columna == 'precio_venta':
+                valores.append(str(random.randint(1000, 20000)))
             else:
                 valores.append(f"'{fake.word()}'")
         
@@ -32,7 +32,7 @@ def generarSQL(nombreTabla, columnas, cantidadDatos):
 
 nombreTabla = 'producto'
 columnas = ['id_producto', 'precio_compra', 'nombre', 'stock', 'precio_venta']
-cantidadDatos = 100
+cantidadDatos = 1000
 
 insertar = generarSQL(nombreTabla, columnas, cantidadDatos)
 

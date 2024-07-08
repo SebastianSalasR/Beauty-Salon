@@ -21,7 +21,7 @@ create table trabajador (
     id_trabajador serial primary key,
     nombre varchar(20) not null,
     apellido varchar(20) not null,
-    telefono int not null,
+    telefono varchar(20) not null,
     id_sede int not null,
     id_comuna int not null
 );
@@ -36,7 +36,7 @@ create table contrato(
 	sueldo int not null,
 	fecha_inicio date not null,
 	fecha_termino date not null,
-	comision int not null,
+	comision float not null,
 	id_cargo int not null,
 	id_trabajador int not null
 );
@@ -47,7 +47,6 @@ create table liquidacion(
 	monto_comision int not null,
 	id_contrato int not null
 );
-
 
 create table producto (
     id_producto serial primary key,
@@ -102,8 +101,8 @@ create table cliente (
     nombre varchar(20) not null,
     apellido varchar(20) not null,
     rut varchar not null,
-    telefono int not null,
-    sexo varchar[20] not null,
+    telefono varchar(20) not null,
+    sexo varchar(20) not null,
     id_comuna int not null
 );
 

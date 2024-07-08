@@ -9,9 +9,9 @@ def generarSQL(nombreTabla, columnas, cantidadDatos):
     for i in range(1, cantidadDatos + 1):
         valores = []
         for columna in columnas:
-            if columna == 'id_vender_producto':
+            if columna == 'id_vender_servicio':
                 valores.append(str(i))
-            elif columna == 'id_producto':
+            elif columna == 'id_servicio':
                 valores.append(str(random.randint(1, 1000)))
             elif columna == 'id_sede':
                 valores.append(str(random.randint(1, 100)))
@@ -24,8 +24,8 @@ def generarSQL(nombreTabla, columnas, cantidadDatos):
 
     return insertarDatos
 
-nombreTabla = 'vender_producto'
-columnas = ['id_vender_producto', 'id_producto', 'id_sede']
+nombreTabla = 'vender_servicio'
+columnas = ['id_vender_servicio', 'id_servicio', 'id_sede']
 cantidadDatos = 1000
 
 insertar = generarSQL(nombreTabla, columnas, cantidadDatos)
