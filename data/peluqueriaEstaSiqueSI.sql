@@ -54,8 +54,7 @@ create table producto (
     precio_compra int not null,
     nombre varchar(20) not null,
     stock int not null,
-    flag boolean not null,
-    precio_venta int not null,
+    precio_venta int not null
 );
 
 create table vender_producto (
@@ -67,8 +66,7 @@ create table vender_producto (
 create table servicio (
     id_servicio serial primary key,
     precio int not null,
-    tipo varchar(20) not null,
-    flag varchar(20) not null,
+    tipo varchar(20) not null
 );
 
 create table vender_servicio(
@@ -82,7 +80,7 @@ create table venta (
     precio_venta_total int not null,
     fecha timestamp not null,
     id_cliente int not null,
-    id_trabajador int not null,
+    id_trabajador int not null
 );
 
 create table tener_venta(
