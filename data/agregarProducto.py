@@ -31,7 +31,7 @@ def generarSQL(nombreTabla, columnas, cantidadDatos):
     return insertarDatos
 
 nombreTabla = 'producto'
-columnas = ['id_producto', 'precio_compra', 'nombre', 'stock', 'flag', 'precio_venta', 'id_vender_producto', 'id_tener_venta']
+columnas = ['id_producto', 'precio_compra', 'nombre', 'stock', 'precio_venta']
 cantidadDatos = 100
 
 insertar = generarSQL(nombreTabla, columnas, cantidadDatos)
