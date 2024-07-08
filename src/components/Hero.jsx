@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Button from "./Button"
+import Link from 'next/link'
 
 async function Hero() {
     return (
@@ -46,11 +47,15 @@ async function Hero() {
                     </p>
                 </div>
                 <div className="flex flex-col w-full gap-3 sm:flex-row">
+                    <Link href="/dashboard">
                     <Button
                         type="button"
-                        title="Download app"
+                        title="Go to dashboard"
                         variant="btn_burgundy"
+                        onClick={() => router.push('/dashboard')}
                     />
+                    </Link>
+
                     <Button
                         type="button"
                         title="How we work?"
