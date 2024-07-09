@@ -1,0 +1,18 @@
+Entendido. Aquí tienes el orden secuencial para crear las tablas y evitar errores de dependencia con las claves foráneas:
+
+    region      LISTO
+    comuna      LISTO
+    sede        LISTO
+    cliente     LISTO
+    servicio    LISTO
+    cargo       LISTO
+    trabajador  LISTO
+    producto    LISTO
+    venta       LISTO
+    contrato    LISTO
+
+Después de crear las tablas base, puedes proceder con las tablas que tienen claves foráneas:
+
+    vender_producto LISTO
+    vender_servicio 
+    liquidacion LISTO
