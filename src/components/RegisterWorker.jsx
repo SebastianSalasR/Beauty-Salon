@@ -63,18 +63,6 @@ function RegisterWorker() {
 					placeholder="Phone number"
 				/>
 				{errors.worker_phone_number && <p className="text-red-500 text-sm">{errors.worker_phone_number.message}</p>}
-
-				<label htmlFor="worker_salary" className="text-slate-500 mb-2 block text-sm">
-					Salary of the worker
-				</label>
-				<input type="number"
-					{...register("worker_salary", { required: { value: true, message: "Worker salary is required" } })}
-					className="p-3 rounded block mb-2 bg-azure text-slate-300 w-full"
-					placeholder="Salary of the worker"
-					min="0"
-				/>
-				{errors.worker_salary && <p className="text-red-500 text-sm">{errors.worker_salary.message}</p>}
-
 				<button className="w-full bg-crimson text-white p-3 rounded-lg">
 					Register worker
 				</button>
