@@ -67,7 +67,6 @@ create table producto (
     precio_compra int not null,
     nombre varchar(20) not null,
     stock int not null,
-    flag boolean not null
 );
 
 alter table cita
