@@ -37,17 +37,6 @@ print("hola")
 cursor_old = conn_old.cursor()
 cursor_new = conn_new.cursor()
 
-cursor_old.execute("""
-    SELECT table_schema, table_name 
-    FROM information_schema.tables 
-    WHERE table_schema = 'beautySalon';
-""")
-tables = cursor_old.fetchall()
-print(tables)
-for table in tables:
-    print(table)
-
-
 # Función para traspasar datos de una tabla
 def transfer_data(query_select, query_insert, transform_fn=None):
     cursor_old.execute(query_select)
@@ -79,7 +68,7 @@ transfer_data(
 transfer_data(
     "SELECT id_trabajador, nombre, apellido, telefono FROM beautySalon.trabajador",
     "INSERT INTO beautySalonStar.trabajador (id_trabajador, nombre, apellido, telefono) VALUES (%s, %s, %s, %s)"
-)
+) 
 
 # Paso 5: Traspasar información de 'cargo'
 transfer_data(
