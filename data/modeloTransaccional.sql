@@ -1,17 +1,17 @@
 create table region (
     id_region serial primary key,
-    nombre varchar(20) not null
+    nombre varchar not null
 );
 
 create table comuna (
     id_comuna serial primary key,
-    nombre varchar(20) not null,
+    nombre varchar not null,
     id_region int not null
 );
 
 create table sede (
     id_sede serial primary key,
-    nombre varchar(20) not null,
+    nombre varchar not null,
     latitud float not null,
     longitud float not null,
     id_comuna int not null
@@ -19,16 +19,16 @@ create table sede (
 
 create table trabajador (
     id_trabajador serial primary key,
-    nombre varchar(20) not null,
-    apellido varchar(20) not null,
-    telefono varchar(20) not null,
+    nombre varchar not null,
+    apellido varchar not null,
+    telefono varchar not null,
     id_sede int not null,
     id_comuna int not null
 );
 
 create table cargo (
     id_cargo serial primary key,
-    nombre varchar(20) not null
+    nombre varchar not null
 );
 
 create table contrato(
@@ -51,7 +51,7 @@ create table liquidacion(
 create table producto (
     id_producto serial primary key,
     precio_compra int not null,
-    nombre varchar(20) not null,
+    nombre varchar not null,
     stock int not null,
     precio_venta int not null
 );
@@ -65,7 +65,7 @@ create table vender_producto (
 create table servicio (
     id_servicio serial primary key,
     precio int not null,
-    tipo varchar(20) not null
+    tipo varchar not null
 );
 
 create table vender_servicio(
@@ -98,11 +98,11 @@ create table cita (
 
 create table cliente (
     id_cliente serial primary key,
-    nombre varchar(20) not null,
-    apellido varchar(20) not null,
+    nombre varchar not null,
+    apellido varchar not null,
     rut varchar not null,
-    telefono varchar(20) not null,
-    sexo varchar(20) not null,
+    telefono varchar not null,
+    sexo varchar not null,
     id_comuna int not null
 );
 
