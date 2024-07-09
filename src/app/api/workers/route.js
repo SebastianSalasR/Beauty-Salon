@@ -5,7 +5,7 @@ import pool from "@/utils/postgres";
 export async function POST(req) {
 	
 	const client = await pool.connect();
-
+	console.log(req);
 	try {
 		await client.query("BEGIN");
 		const data = await req.json();

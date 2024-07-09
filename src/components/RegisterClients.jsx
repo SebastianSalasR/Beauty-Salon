@@ -69,6 +69,16 @@ function Registerclient() {
 				/>
 				{errors.client_phone_number && <p className="text-red-500 text-sm">{errors.client_phone_number.message}</p>}
 
+				<label htmlFor="client_rut" className="text-slate-500 mb-2 block text-sm">
+					Rut of the client
+				</label>
+				<input type="text"
+					{...register("client_rut", { required: { value: true, message: "client phone number is required" } })}
+					className="p-3 rounded block mb-2 bg-azure text-slate-300 w-full"
+					placeholder="client rut"
+				/>
+				{errors.client_rut && <p className="text-red-500 text-sm">{errors.client_rut.message}</p>}
+
 
 				<button className="w-full bg-crimson text-white p-3 rounded-lg">
 					Register client
