@@ -1,75 +1,3 @@
-<<<<<<< HEAD
-create table cita(
-	id int primary key not null,
-	fecha timestamp not null,
-	id_servicio int not null,
-	id_trabajador int not null,
-	id_cliente int not null,
-	id_comuna int not null,
-	id_region int not null,
-	id_sede int not null,
-	id_venta int not null,
-	id_producto int not null,
-	id_cargo int not null
-);
-
-create table cliente (
-	id int primary key not null,
-	nombre varchar(20) not null,
-	apellido varchar(20) not null,
-	rut varchar not null,
-	telefono int not null
-);
-
-create table servicio (
-	id int primary key not null,
-	precio int not null,
-	tipo varchar(20) not null
-);
-
-create table trabajador (
-	id int primary key not null,
-	nombre varchar(20) not null,
-	apellido varchar(20) not null,
-	telefono int not null,
-	sueldo int not null
-);
-
-create table sede(
-	id int primary key not null,
-	nombre varchar(20) not null,
-	latitud float not null,
-	longitud float not null
-);
-
-create table comuna(
-	id int primary key not null,
-	nombre varchar(20) not null
-);
-
-create table region(
-	id int primary key not null,
-	nombre varchar(20) not null
-);
-
-create table venta (
-	id int primary key not null,
-	precio_venta int not null,
-	fecha timestamp not null
-);
-
-create table cargo (
-	id int primary key not null,
-	nombre varchar(20) not null
-);
-
-create table producto (
-	id int primary key not null,
-	precio_compra int not null,
-	nombre varchar(20) not null,
-	stock int not null,
-	flag boolean not null
-=======
 create table agendar_cita(
     id_cita int primary key not null,
 	id_cliente int not null,   
@@ -136,7 +64,6 @@ create table producto (
     precio_compra int not null,
     nombre varchar(20) not null,
     stock int not null
->>>>>>> refs/remotes/origin/main
 );
 
 create table vender_producto(
