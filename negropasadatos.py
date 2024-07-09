@@ -7,7 +7,7 @@ def transfer_data(select_query, insert_query, transform_func=None):
 			dbname="beautySalon",
 			user="postgres",
 			password="Computin1.",
-			host="localhost",
+			host="127.0.0.1",
 			port="5432"
 		)
 		cursor_source = conn_source.cursor()
@@ -17,7 +17,7 @@ def transfer_data(select_query, insert_query, transform_func=None):
 			dbname="beautySalonStar",
 			user="postgres",
 			password="Computin1.",
-			host="localhost",
+			host="127.0.0.1",
 			port="5432"
 		)
 		cursor_target = conn_target.cursor()
