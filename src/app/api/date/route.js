@@ -9,24 +9,41 @@ export async function POST(req) {
 	try {
 		await client.query("BEGIN");
 		const data = await req.json();
+		console.log(data);
+		const [client_nombre, client_apellido] = data.client_date.split(' ');
+		const [worker_nombre, worker_apellido] = data.worker_date.split(' ');
 
-		const id_trabajador = await client.query('SELECT id_trabajador FROM trabajador WHERE nombre =', data.client_date);
-		const id_cliente = await client.query('SELECT id_cliente FROM cliente WHERE nombre =', data.worker_date);
-		id_servicio = await client.query('SELECT id_servicio FROM trabajadores WHERE nombre =', data.service_date);
+		const id_trabajadorr = await client.query(
+			'SELECT id_trabajador FROM trabajador WHERE nombre = $1 AND apellido = $2',
+			[worker_nombre, worker_apellido]
+		);
+		const id_trabajador = id_trabajadorr.rows[0]?.id_trabajador;
+
+		const id_clientee = await client.query(
+			'SELECT id_cliente FROM cliente WHERE nombre = $1 AND apellido = $2',
+			[client_nombre, client_apellido]
+		);
+		
+		const id_cliente = id_clientee.rows[0]?.id_cliente;
+
+		const id_servicioo = await client.query(
+			'SELECT id_servicio FROM servicio WHERE tipo = $1',
+			[data.service_date]
+		)
+		const id_servicio = id_servicioo.rows[0]?.id_servicio;
 
 		console.log("Nombre cliente ", data.client_date, "ID: ",id_trabajador);
 		console.log("Nombre trabajador ", data.worker_date, "ID: ",id_cliente);
-		console.log("Nombre servicio ", data.service_date, "ID: ",id_servicio);
+		console.log("Servicio ", data.service_date, "ID: ", id_servicio);
 
-
-		const newDate = await client.query(`insert into cita (fecha, id_trabajador, id_cliente, id_servicio) values ($1, $2, $3, $4, $5)`, [data.date_date, id_trabajador, id_cliente, id_servicio]);
+		const newDate = await client.query(`INSERT INTO cita (fecha, id_trabajador, id_cliente, id_servicio) VALUES ($1, $2, $3, $4)`, [data.date_date, id_trabajador, id_cliente, id_servicio]);
 
 		await client.query("COMMIT");
 
 		console.log("New date created: ")
-		console.log(newCita.rows[0]);
+		console.log(newDate.rows[0]);
 
-		return NextResponse.json({ message: 'Date created successfully', worker: newWorker.rows[0] });
+		return NextResponse.json({ message: 'Date created successfully', date: newDate.rows[0] });
 	} catch (error) {
 		await client.query('ROLLBACK');
 		console.error("Error creating date:", error);
