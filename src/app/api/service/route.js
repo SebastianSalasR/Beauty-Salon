@@ -9,7 +9,7 @@ export async function POST(req) {
 		await client.query("BEGIN");
 		const data = await req.json();
 
-		const newService = await client.query(`insert into servicio (precio, tipo, flag, id_vender_servicio) values ($1, $2, $3, $4)`,[data.service_price, data.service_kind, 1, 1]);
+		const newService = await client.query(`insert into servicio (precio, tipo) values ($1, $2)`,[data.service_price, data.service_kind]);
 
 		await client.query("COMMIT");
 

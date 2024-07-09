@@ -19,7 +19,7 @@ export async function POST(req) {
 		console.log("Nombre servicio ", data.service_date, "ID: ",id_servicio);
 
 
-		const newDate = await client.query(`insert into cita (fecha, id_trabajador, id_cliente, id_servicio) values ($1, $2, $3, $4, $5)`, [date_date, id_trabajador, id_cliente, id_servicio]);
+		const newDate = await client.query(`insert into cita (fecha, id_trabajador, id_cliente, id_servicio) values ($1, $2, $3, $4, $5)`, [data.date_date, id_trabajador, id_cliente, id_servicio]);
 
 		await client.query("COMMIT");
 
