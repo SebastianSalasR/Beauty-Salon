@@ -14,8 +14,8 @@ create table cliente (
     id_cliente int primary key not null,
     nombre varchar(20) not null,
     apellido varchar(20) not null,
-    rut int not null,
-    telefono int not null
+    rut varchar(20) not null,
+    telefono varchar(20) not null
 );
 
 create table servicio (
@@ -28,7 +28,7 @@ create table trabajador (
     id_trabajador int primary key not null,
     nombre varchar(20) not null,
     apellido varchar(20) not null,
-    telefono int not null
+    telefono varchar(20) not null
 );
 
 create table sede(
@@ -84,8 +84,8 @@ create table vender_producto(
 
 create table contrato(
 	id_contrato int primary key not null,
-	porcentaje_comision int not null,
-	fecha_inicio date not null,
+	porcentaje_comision float not null,
+	fecha_inicio timestamp not null,
 	sueldo int not null	
 );
 
@@ -98,7 +98,7 @@ create table liquidacion(
 	id_region int not null,
 	monto_comision int not null,
 	pago_total int not null,
-	fecha_pago date not null
+	fecha_pago timestamp not null
 );
 
 alter table agendar_cita

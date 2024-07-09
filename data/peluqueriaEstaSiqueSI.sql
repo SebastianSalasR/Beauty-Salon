@@ -34,8 +34,8 @@ create table cargo (
 create table contrato(
 	id_contrato serial primary key,
 	sueldo int not null,
-	fecha_inicio date not null,
-	fecha_termino date not null,
+	fecha_inicio timestamp not null,
+	fecha_termino timestamp not null,
 	comision float not null,
 	id_cargo int not null,
 	id_trabajador int not null
@@ -43,7 +43,7 @@ create table contrato(
 
 create table liquidacion(
 	id_liquidacion serial primary key,
-	fecha_pago date not null,
+	fecha_pago timestamp not null,
 	monto_comision int not null,
 	id_contrato int not null
 );
