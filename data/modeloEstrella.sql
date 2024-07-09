@@ -1,84 +1,84 @@
 create table agendar_cita(
-    id_cita int primary key not null,
+	id_cita int primary key not null,
 	id_cliente int not null,   
-    id_servicio int not null,
-    id_trabajador int not null,
-    id_cargo int not null,
-    id_sede int not null,
-    id_comuna int not null,
-    id_region int not null,
-    fecha_cita timestamp not null 
+	id_servicio int not null,
+	id_trabajador int not null,
+	id_cargo int not null,
+	id_sede int not null,
+	id_comuna int not null,
+	id_region int not null,
+	fecha_cita timestamp not null 
 );
 
 create table cliente (
-    id_cliente int primary key not null,
-    nombre varchar(20) not null,
-    apellido varchar(20) not null,
-    rut varchar(20) not null,
-    telefono varchar(20) not null
+	id_cliente int primary key not null,
+	nombre varchar(20) not null,
+	apellido varchar(20) not null,
+	rut varchar(20) not null,
+	telefono varchar(20) not null
 );
 
 create table servicio (
-    id_servicio int primary key not null,
-    tipo varchar(20) not null,
-    precio_servicio int not null
+	id_servicio int primary key not null,
+	tipo varchar(20) not null,
+	precio_servicio int not null
 );
 
 create table trabajador (
-    id_trabajador int primary key not null,
-    nombre varchar(20) not null,
-    apellido varchar(20) not null,
-    telefono varchar(20) not null
+	id_trabajador int primary key not null,
+	nombre varchar(20) not null,
+	apellido varchar(20) not null,
+	telefono varchar(20) not null
 );
 
 create table sede(
-    id_sede int primary key not null,
-    nombre varchar(20) not null,
-    latitud float not null,
-    longitud float not null
+	id_sede int primary key not null,
+	nombre varchar(20) not null,
+	latitud float not null,
+	longitud float not null
 );
 
 create table comuna(
-    id_comuna int primary key not null,
-    nombre varchar(20) not null
+	id_comuna int primary key not null,
+	nombre varchar(20) not null
 );
 
 create table region(
-    id_region int primary key not null,
-    nombre varchar(20) not null
+	id_region int primary key not null,
+	nombre varchar(20) not null
 );
 
 create table venta (
-    id_venta int primary key not null,
-    precio_venta int not null,
-    fecha timestamp not null
+	id_venta int primary key not null,
+	precio_venta int not null,
+	fecha timestamp not null
 );
 
 create table cargo (
-    id_cargo int primary key not null,
-    nombre varchar(20) not null
+	id_cargo int primary key not null,
+	nombre varchar(20) not null
 );
 
 create table producto (
-    id_producto int primary key not null,
-    precio_compra int not null,
-    nombre varchar(20) not null,
-    stock int not null
+	id_producto int primary key not null,
+	precio_compra int not null,
+	nombre varchar(20) not null,
+	stock int not null
 );
 
 create table vender_producto(
 	id_vender int primary key not null,
 	id_producto int not null,
 	id_cliente int not null,   
-    id_servicio int not null,
-    id_trabajador int not null,
-    id_cargo int not null,
-    id_sede int not null,
-    id_comuna int not null,
-    id_region int not null,
-    id_venta int not null,
-    fecha_venta timestamp not null,
-    precio_venta int not null
+	id_servicio int not null,
+	id_trabajador int not null,
+	id_cargo int not null,
+	id_sede int not null,
+	id_comuna int not null,
+	id_region int not null,
+	id_venta int not null,
+	fecha_venta timestamp not null,
+	precio_venta int not null
 );
 
 
@@ -180,4 +180,3 @@ foreign key (id_trabajador) references trabajador(id_trabajador);
 alter table liquidacion
 add constraint fk_liquidacion_contrato
 foreign key (id_contrato) references contrato(id_contrato);
-
