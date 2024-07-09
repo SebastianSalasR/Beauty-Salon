@@ -20,7 +20,7 @@ def generarSQL(nombreTabla, columnas, cantidadDatos):
             elif columna == 'apellido':
                 valores.append(f"'{fake.last_name()}'")
             elif columna == 'rut':
-                valores.append(str(1200000+i) + "-" + str(np.random.choice(digitos)))
+                valores.append("'" + str(1200000+i) + "-" + str(np.random.choice(digitos)) + "'")
             elif columna == 'telefono':
                 valores.append(f"'{fake.phone_number()}'")
             elif columna == 'sexo':

@@ -4,7 +4,7 @@ INSERT INTO region (id_region, nombre) VALUES (3, 'Region de Atacama');
 INSERT INTO region (id_region, nombre) VALUES (4, 'Region de Coquimbo');
 INSERT INTO region (id_region, nombre) VALUES (5, 'Region de Valparaiso');
 INSERT INTO region (id_region, nombre) VALUES (6, 'Region Metropolitana de Santiago');
-INSERT INTO region (id_region, nombre) VALUES (7, 'Region Bernardo OHiggins');
+INSERT INTO region (id_region, nombre) VALUES (7, 'Region del Libertador General Bernardo OHiggins');
 INSERT INTO region (id_region, nombre) VALUES (8, 'Region del Maule');
 INSERT INTO region (id_region, nombre) VALUES (9, 'Region de nhuble');
 INSERT INTO region (id_region, nombre) VALUES (10, 'Region del Biobio');
