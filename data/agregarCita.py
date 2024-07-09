@@ -31,7 +31,7 @@ def generarSQL(nombreTabla, columnas, cantidadDatos):
             elif columna == 'id_cliente':
                 valores.append(str(random.randint(1, 1000)))
             elif columna == 'id_servicio':
-                valores.append(str(random.randint(1, 3)))
+                valores.append(str(random.randint(1, 1000)))
             else:
                 valores.append(f"'{fake.word()}'")
         
