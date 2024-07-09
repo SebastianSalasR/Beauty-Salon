@@ -15,6 +15,8 @@ def generarSQL(nombreTabla, columnas, cantidadDatos):
                 valores.append(str(i))
             elif columna == 'nombre':
                 valores.append(f"'{comunas[i]}'")
+            elif columna == 'id_region':
+                valores.append(str(random.randint(1, 10)))
             else:
                 valores.append(f"'{fake.word()}'")
         
@@ -25,7 +27,7 @@ def generarSQL(nombreTabla, columnas, cantidadDatos):
     return insertarDatos
 
 nombreTabla = 'comuna'
-columnas = ['id_comuna', 'nombre']
+columnas = ['id_comuna', 'nombre', 'id_region']
 cantidadDatos = 10
 
 insertar = generarSQL(nombreTabla, columnas, cantidadDatos)
