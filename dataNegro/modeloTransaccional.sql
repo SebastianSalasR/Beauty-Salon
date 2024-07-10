@@ -78,8 +78,6 @@ create table vender_producto (
     id_sede int 
 );
 
-
-
 create table vender_servicio(
     id_vender_servicio int  primary key,
     id_servicio int ,

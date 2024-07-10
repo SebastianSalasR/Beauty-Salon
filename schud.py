@@ -25,8 +25,8 @@ user = "postgres"
 host = "localhost"
 port = "5432"
 password = "Computin1."
-nombre_base_datos_antigua= "beautySalon"
-nombre_base_datos_nueva = "beautySalonStar"
+nombre_base_datos_antigua= "beautySalonFull"
+nombre_base_datos_nueva = "beautySalonStarFull"
 # Conectar a la base de datos antigua y nueva
 
 print(host)
@@ -50,26 +50,30 @@ def transfer_data(query_select, query_insert, transform_fn=None):
 # Paso 1: Traspasar información de 'region'
 transfer_data(
 	"SELECT id_region, nombre FROM public.region",
-	"INSERT INTO public.region (id_region, nombre) VALUES (%s, %s)"
+    "INSERT INTO public.region (id_region, nombre) VALUES (%s, %s)"
 )
+print("Paso 1 completado")
 
 # Paso 2: Traspasar información de 'comuna'
 transfer_data(
-	"SELECT id_comuna, nombre, id_region FROM public.comuna",
+	"SELECT id_comuna, nombre FROM public.comuna",
 	"INSERT INTO public.comuna (id_comuna, nombre) VALUES (%s, %s)"
 )
+print("Paso 2 completado")
 
 # Paso 3: Traspasar información de 'sede'
 transfer_data(
-	"SELECT id_sede, nombre, latitud, longitud, id_comuna FROM public.sede",
+	"SELECT id_sede, nombre, latitud, longitud FROM public.sede",
 	"INSERT INTO public.sede (id_sede, nombre, latitud, longitud) VALUES (%s, %s, %s, %s)"
 )
+print("Paso 3 completado")
 
 # Paso 4: Traspasar información de 'trabajador'
 transfer_data(
 	"SELECT id_trabajador, nombre, apellido, telefono FROM public.trabajador",
 	"INSERT INTO public.trabajador (id_trabajador, nombre, apellido, telefono) VALUES (%s, %s, %s, %s)"
 )
+print("Paso 4 completado")
 
 # Paso 5: Traspasar información de 'cargo'
 transfer_data(
@@ -77,30 +81,41 @@ transfer_data(
 	"INSERT INTO public.cargo (id_cargo, nombre) VALUES (%s, %s)"
 )
 
+print("Paso 5 completado")
+
 # Paso 6: Traspasar información de 'producto'
 transfer_data(
-	"SELECT id_producto, precio_compra, nombre, stock, precio_venta FROM public.producto",
-	"INSERT INTO public.producto (id_producto, precio_compra, nombre, stock, flag) VALUES (%s, %s, %s, %s, %s)"
+	"SELECT id_producto, precio_compra, nombre, stock FROM public.producto",
+	"INSERT INTO public.producto (id_producto, precio_compra, nombre, stock) VALUES (%s, %s, %s, %s, %s)"
 )
+
+print("Paso 6 completado")
 
 # Paso 7: Traspasar información de 'servicio'
 transfer_data(
 	"SELECT id_servicio, precio, tipo FROM public.servicio",
-	"INSERT INTO public.servicio (id_servicio, tipo, precio_servicio, flag) VALUES (%s, %s, %s, %s)",
-	lambda row: (row[0], row[2], row[1], True)  # Transformación para ajustar campos y agregar flag
+	"INSERT INTO public.servicio (id_servicio, tipo, precio_servicio) VALUES (%s, %s, %s)",
+	lambda row: (row[0], row[2], row[1])  # Transformación para ajustar campos y agregar flag
 )
+print("Paso 7 completado")
+
 
 # Paso 8: Traspasar información de 'venta'
 transfer_data(
 	"SELECT id_venta, precio_venta_total, fecha FROM public.venta",
 	"INSERT INTO public.venta (id_venta, precio_venta, fecha) VALUES (%s, %s, %s)"
 )
+print("Paso 8 completado")
+
 
 # Paso 9: Traspasar información de 'cliente'
 transfer_data(
 	"SELECT id_cliente, nombre, apellido, rut, telefono FROM public.cliente",
 	"INSERT INTO public.cliente (id_cliente, nombre, apellido, rut, telefono) VALUES (%s, %s, %s, %s, %s)"
 )
+
+print("Paso 9 completado")
+
 
 # Paso 10: Traspasar información de 'cita' a 'agendar_cita'
 transfer_data(

@@ -12,40 +12,40 @@ create table agendar_cita(
 
 create table cliente (
 	id_cliente int primary key not null,
-	nombre varchar(20) not null,
-	apellido varchar(20) not null,
-	rut varchar(20) not null,
-	telefono varchar(20) not null
+	nombre varchar not null,
+	apellido varchar not null,
+	rut varchar not null,
+	telefono varchar not null
 );
 
 create table servicio (
 	id_servicio int primary key not null,
-	tipo varchar(20) not null,
+	tipo varchar not null,
 	precio_servicio int not null
 );
 
 create table trabajador (
 	id_trabajador int primary key not null,
-	nombre varchar(20) not null,
-	apellido varchar(20) not null,
-	telefono varchar(20) not null
+	nombre varchar not null,
+	apellido varchar not null,
+	telefono varchar not null
 );
 
 create table sede(
 	id_sede int primary key not null,
-	nombre varchar(20) not null,
+	nombre varchar not null,
 	latitud float not null,
 	longitud float not null
 );
 
 create table comuna(
 	id_comuna int primary key not null,
-	nombre varchar(20) not null
+	nombre varchar not null
 );
 
 create table region(
 	id_region int primary key not null,
-	nombre varchar(50) not null
+	nombre varchar not null
 );
 
 create table venta (
@@ -56,13 +56,13 @@ create table venta (
 
 create table cargo (
 	id_cargo int primary key not null,
-	nombre varchar(20) not null
+	nombre varchar not null
 );
 
 create table producto (
 	id_producto int primary key not null,
 	precio_compra int not null,
-	nombre varchar(20) not null,
+	nombre varchar not null,
 	stock int not null
 );
 
