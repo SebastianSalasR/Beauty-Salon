@@ -86,10 +86,10 @@ print("Paso 5 completado")
 # Paso 6: Traspasar información de 'producto'
 transfer_data(
 	"SELECT id_producto, precio_compra, nombre, stock FROM public.producto",
-	"INSERT INTO public.producto (id_producto, precio_compra, nombre, stock) VALUES (%s, %s, %s, %s, %s)"
+	"INSERT INTO public.producto (id_producto, precio_compra, nombre, stock) VALUES (%s, %s, %s, %s)"
 )
-
 print("Paso 6 completado")
+
 
 # Paso 7: Traspasar información de 'servicio'
 transfer_data(
