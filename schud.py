@@ -119,18 +119,22 @@ print("Paso 9 completado")
 
 # Paso 10: Traspasar información de 'cita' a 'agendar_cita'
 transfer_data(
-	"""
-	SELECT c.id_cita, c.fecha, c.id_trabajador, c.id_cliente, c.id_servicio, s.id_comuna, ca.id_region FROM cita c
-	JOIN trabajador t ON c.id_trabajador = t.id_trabajador
-	JOIN sede s ON t.id_sede = s.id_sede
-	join comuna ca ON s.id_comuna = ca.id_comuna
-	""",
-	"""
-	INSERT INTO agendar_cita ( id_cita, id_cliente, id_servicio, id_trabajador, id_cargo, id_sede, id_comuna, id_region, fecha_cita ) 
-	VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
-	""",
-	lambda row: (row[0], row[3], row[4], row[2], 1, row[2], row[5], row[6], row[1])  # Asignar 1 como id_cargo por defecto
-)# REVISAR ESTA QUERY
+    """
+    SELECT c.id_cita, 						  c.id_cliente, c.id_servicio, c.id_trabajador,         s.id_sede, s.id_comuna, ca.id_region, c.fecha 
+    FROM public.cita c
+    JOIN public.trabajador t ON c.id_trabajador = t.id_trabajador
+    JOIN public.sede s ON t.id_sede = s.id_sede
+    JOIN public.comuna ca ON s.id_comuna = ca.id_comuna
+    """,
+    """
+    INSERT INTO public.agendar_cita (id_cita, id_cliente, id_servicio,      id_trabajador, id_cargo, id_sede, id_comuna, id_region, fecha_cita) 
+    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+    """,
+    lambda row: (row[0], row[1], row[2], row[3], 1, row[4], row[5], row[6], row[7])  # Asignar 1 como id_cargo por defecto
+)
+print("Paso 10 completado")
+
+
 
 # Confirmar los cambios y cerrar las conexiones
 conn_new.commit()
