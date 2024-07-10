@@ -5,7 +5,7 @@ JOIN comuna c ON ac.id_comuna = c.id_comuna
 GROUP BY s.nombre, c.nombre, DATE_PART('hour', ac.fecha_cita)
 ORDER BY total_citas DESC LIMIT 1;
 
--- 2 tiempo: 0.457 (no tiro nada)
+-- 2 
 SELECT cl.nombre AS nombre_cliente, cl.apellido AS apellido_cliente, cc.nombre AS comuna_cliente, s.nombre AS nombre_peluqueria, cs.nombre AS comuna_peluqueria, SUM(vp.precio_venta) AS total_gasto
 FROM vender_producto vp
 JOIN cliente cl ON vp.id_cliente = cl.id_cliente
