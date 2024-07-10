@@ -42,6 +42,7 @@ cursor_new = conn_new.cursor()
 def transfer_data(query_select, query_insert, transform_fn=None):
 	cursor_old.execute(query_select)
 	rows = cursor_old.fetchall()
+	print(len(rows))
 	for row in rows:
 		if transform_fn:
 			row = transform_fn(row)
@@ -95,7 +96,7 @@ print("Paso 6 completado")
 transfer_data(
 	"SELECT id_servicio, precio, tipo FROM public.servicio",
 	"INSERT INTO public.servicio (id_servicio, tipo, precio_servicio) VALUES (%s, %s, %s)",
-	lambda row: (row[0], row[2], row[1])  # Transformación para ajustar campos y agregar flag
+	lambda row: (row[0], row[2], row[1])
 )
 print("Paso 7 completado")
 

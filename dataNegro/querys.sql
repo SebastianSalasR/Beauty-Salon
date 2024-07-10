@@ -1,4 +1,4 @@
--- 1
+-- 1 tiempo: 0.083
 SELECT s.nombre AS nombre_peluqueria, c.nombre AS comuna, DATE_PART('hour', ac.fecha_cita) AS hora, COUNT(ac.id_cita) AS total_citas FROM agendar_cita ac
 JOIN sede s ON ac.id_sede = s.id_sede 
 JOIN comuna c ON ac.id_comuna = c.id_comuna
