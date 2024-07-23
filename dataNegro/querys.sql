@@ -15,11 +15,25 @@ JOIN comuna cs ON vp.id_comuna = cs.id_comuna
 GROUP BY cl.nombre, cl.apellido, cc.nombre, s.nombre, cs.nombre ORDER BY total_gasto DESC;
 
 -- 3 tiempo: 0.037(no tiro nada)
-SELECT t.nombre AS nombre_peluquero, t.apellido AS apellido_peluquero, s.nombre AS nombre_peluqueria, DATE_TRUNC('month', vp.fecha_venta) AS mes, SUM(vp.precio_venta) AS total_ganado FROM vender_producto vp
-JOIN trabajador t ON vp.id_trabajador = t.id_trabajador
-JOIN sede s ON vp.id_sede = s.id_sede
-WHERE DATE_PART('year', vp.fecha_venta) = 2023
-GROUP BY t.nombre, t.apellido, s.nombre, mes ORDER BY total_ganado DESC;
+SELECT 
+    t.nombre AS nombre_trabajador,
+    t.apellido AS apellido_trabajador,
+    s.nombre AS nombre_sede,
+    DATE_TRUNC('month', vp.fecha_venta) AS mes,
+    SUM(vp.precio_venta) AS total_ganado
+FROM 
+    vender_producto vp
+JOIN 
+    trabajador t ON vp.id_trabajador = t.id_trabajador
+JOIN 
+    sede s ON vp.id_sede = s.id_sede
+WHERE 
+    EXTRACT(YEAR FROM vp.fecha_venta) = 2023
+GROUP BY 
+    t.id_trabajador, t.nombre, t.apellido, s.nombre, DATE_TRUNC('month', vp.fecha_venta)
+ORDER BY 
+    s.nombre, DATE_TRUNC('month', vp.fecha_venta), total_ganado DESC;
+
 
 -- 4 tiempo: 0.012(no tiro nada)
 SELECT cl.nombre, cl.apellido, cl.telefono FROM agendar_cita ac
