@@ -1,0 +1,10 @@
+Lista de empleados de una compañía junto con su salario promedio
+Total de ingresos generados por una compañía en un año específico
+Lista de aviones comprados por una compañía en un rango de fechas
+Cantidad de pasajes vendidos en cada destino por una compañía en el último año
+Promedio de vuelos realizados por cada avión de una compañía
+Lista de clientes que han comprado pasajes más de una vez durante junio en el anho 2023
+Empleado por companhia con mejor sueldo
+Modelo de acion mas caro comprado junto a su fecha de compra
+Cantidad de empleados por tipo en una compañía
+Destino mas visitado en el 2023
