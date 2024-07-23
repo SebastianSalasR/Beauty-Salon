@@ -1,0 +1,10 @@
+INSERT INTO comuna (id_comuna, nombre, id_region) VALUES (1, 'Valparaiso', 3);
+INSERT INTO comuna (id_comuna, nombre, id_region) VALUES (2, 'Concepcion', 8);
+INSERT INTO comuna (id_comuna, nombre, id_region) VALUES (3, 'La Serena', 9);
+INSERT INTO comuna (id_comuna, nombre, id_region) VALUES (4, 'Antofagasta', 2);
+INSERT INTO comuna (id_comuna, nombre, id_region) VALUES (5, 'Temuco', 8);
+INSERT INTO comuna (id_comuna, nombre, id_region) VALUES (6, 'Iquique', 1);
+INSERT INTO comuna (id_comuna, nombre, id_region) VALUES (7, 'Rancagua', 4);
+INSERT INTO comuna (id_comuna, nombre, id_region) VALUES (8, 'Talca', 1);
+INSERT INTO comuna (id_comuna, nombre, id_region) VALUES (9, 'Chillan', 10);
+INSERT INTO comuna (id_comuna, nombre, id_region) VALUES (10, 'Arica', 1);

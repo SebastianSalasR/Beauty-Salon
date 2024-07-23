@@ -1,0 +1,166 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User { // Creates a table that waits for this atributes to be loaded
+  id Int @id @default(autoincrement())
+  email String @unique
+  username String @unique
+  password String
+  createdAt DateTime @default(now())// Stores the date when it was created
+  updatedAt DateTime @updatedAt// Stores the date when it was updated
+}
+
+model Region {
+  id_region Int     @id @default(autoincrement())
+  nombre    String  @unique
+  comunas   Comuna[]
+}
+
+model Comuna {
+  id_comuna Int     @id @default(autoincrement())
+  nombre    String  @unique
+  id_region Int
+  region    Region  @relation(fields: [id_region], references: [id_region])
+  sedes     Sede[]
+  trabajadores Trabajador[]
+  clientes  Cliente[]
+}
+
+model Sede {
+  id_sede    Int     @id @default(autoincrement())
+  nombre     String  @unique
+  latitud    Float
+  longitud   Float
+  id_comuna  Int
+  comuna     Comuna  @relation(fields: [id_comuna], references: [id_comuna])
+  trabajadores Trabajador[]
+  venderProductos VenderProducto[]
+  venderServicios VenderServicio[]
+}
+
+model Trabajador {
+  id_trabajador Int     @id @default(autoincrement())
+  nombre        String  
+  apellido      String  
+  telefono      Int
+  id_comuna     Int
+  id_sede       Int
+  comuna        Comuna  @relation(fields: [id_comuna], references: [id_comuna])
+  sede          Sede    @relation(fields: [id_sede], references: [id_sede])
+  contratos     Contrato[]
+  ventas        Venta[]
+  citas         Cita[]
+}
+
+model Contrato {
+  id_contrato  Int        @id @default(autoincrement())
+  sueldo       Int
+  fecha_inicio DateTime
+  fecha_termino DateTime
+  comision     Int
+  id_cargo     Int
+  id_trabajador Int
+  cargo        Cargo      @relation(fields: [id_cargo], references: [id_cargo])
+  trabajador   Trabajador @relation(fields: [id_trabajador], references: [id_trabajador])
+  liquidaciones Liquidacion[]
+}
+
+model Liquidacion {
+  id_liquidacion Int        @id @default(autoincrement())
+  fecha_pago     DateTime
+  monto_comision Int
+  id_contrato    Int
+  contrato       Contrato   @relation(fields: [id_contrato], references: [id_contrato])
+}
+
+model Venta {
+  id_venta           Int     @id @default(autoincrement())
+  precio_venta_total Int
+  fecha              DateTime
+  id_cliente         Int
+  id_trabajador      Int
+  cliente            Cliente  @relation(fields: [id_cliente], references: [id_cliente])
+  trabajador         Trabajador @relation(fields: [id_trabajador], references: [id_trabajador])
+  tenerVenta         TenerVenta?
+}
+model Cita {
+  id_cita       Int     @id @default(autoincrement())
+  fecha         DateTime
+  id_trabajador Int
+  id_cliente    Int
+  id_servicio   Int
+  trabajador    Trabajador @relation(fields: [id_trabajador], references: [id_trabajador])
+  cliente       Cliente    @relation(fields: [id_cliente], references: [id_cliente])
+  servicio      Servicio   @relation(fields: [id_servicio], references: [id_servicio])
+}
+
+model Cargo {
+  id_cargo  Int     @id @default(autoincrement())
+  nombre     String  @unique
+  contratos  Contrato[]
+}
+
+model Producto {
+  id_producto        Int      @id @default(autoincrement())
+  precio_compra      Int
+  nombre             String   @unique
+  stock              Int
+  flag               Boolean
+  precio_venta       Int
+  tenerVenta         TenerVenta?
+  venderProducto     VenderProducto?
+}
+
+model VenderProducto {
+  id_vender_producto Int     @id @default(autoincrement())
+  id_producto        Int @unique
+  id_sede            Int
+  producto           Producto @relation(fields: [id_producto], references: [id_producto])
+  sede               Sede     @relation(fields: [id_sede], references: [id_sede])
+}
+
+model Servicio {
+  id_servicio       Int      @id @default(autoincrement())
+  precio            Int
+  tipo              String
+  flag              String
+  venderServicio    VenderServicio?
+  citas             Cita[]
+}
+
+model VenderServicio {
+  id_vender_servicio Int     @id @default(autoincrement())
+  id_servicio        Int @unique
+  id_sede            Int
+  servicio           Servicio @relation(fields: [id_servicio], references: [id_servicio])
+  sede               Sede     @relation(fields: [id_sede], references: [id_sede])
+}
+
+
+model TenerVenta {
+  id_tener_venta Int     @id @default(autoincrement())
+  id_producto    Int @unique
+  id_venta       Int @unique
+  producto       Producto @relation(fields: [id_producto], references: [id_producto])
+  venta          Venta    @relation(fields: [id_venta], references: [id_venta])
+}
+
+
+model Cliente {
+  id_cliente Int     @id @default(autoincrement())
+  nombre     String  @db.VarChar(20)
+  apellido   String  @db.VarChar(20)
+  rut        String
+  telefono   Int
+  sexo       String  @db.VarChar(20)
+  id_comuna  Int
+  comuna     Comuna  @relation(fields: [id_comuna], references: [id_comuna])
+  ventas     Venta[]
+  citas      Cita[]
+}

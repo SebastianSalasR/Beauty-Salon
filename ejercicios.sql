@@ -1,3 +1,23 @@
+-- 3)
+select productName , quantityInStock from products ORDER BY quantityInStock DESC;
+
+
+-- 4)
+select orderDate from orders ORDER BY orderDate DESC limit 3;
+
+-- 5)
+select productName, productLine from products where productLine like '%cars%'
+
+-- 6)
+select productCode, productLine from products where productLine not like '%cars%' and productLine not like '%Motorcycles%';
+
+-- 7)
+select c.customerName, c.contactFirstName, c.contactLastName, p.productLine from customers c 
+inner join orders o on c.customerNumber = o.customerNumber 
+inner join orderdetails od on o.orderNumber = o.orderNumber 
+inner join products p  on p.productCode = od.productCode
+where p.productLine like '%planes';
+
 -- 8)
 SELECT pl.productLine, COUNT(*) FROM productlines pl
 INNER JOIN products p ON pl.productLine = p.productLine 
